@@ -30,19 +30,25 @@ const HeaderSlider = () => {
     },
   ];
 
+ 
+  
+
   const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % sliderData.length);
     }, 3000);
+    
     return () => clearInterval(interval);
+    
   }, [sliderData.length]);
 
   const handleSlideChange = (index) => {
     setCurrentSlide(index);
   };
 
+  
   return (
     <div className="overflow-hidden relative w-full">
       <div
@@ -51,7 +57,7 @@ const HeaderSlider = () => {
           transform: `translateX(-${currentSlide * 100}%)`,
         }}
       >
-        {sliderData.map((slide, index) => (
+        {sliderData.map((slide, index) => ( 
           <div
             key={slide.id}
             className="flex flex-col-reverse md:flex-row items-center justify-between bg-[#E6E9F2] py-8 md:px-14 px-5 mt-6 rounded-xl min-w-full"
